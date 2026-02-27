@@ -1,54 +1,6 @@
-export default function GeographyPage() {
-  const countries = [
-    {
-      title: "Switzerland",
-      subtitle: "Core banking jurisdiction and prime alpine residences.",
-      cities:
-        "Lugano · Zurich · Geneva · St. Moritz · Davos · Zermatt · Crans-Montana · Gstaad · Low-tax cantons",
-    },
-    {
-      title: "Italy",
-      subtitle: "Lifestyle estates and legacy property locations.",
-      cities:
-        "Milan · Lake Como · Lake Garda · Lake Maggiore · Tuscany · Florence · Rome · Venice · Campione d’Italia",
-    },
-    {
-      title: "Monaco",
-      subtitle: "Ultra-high-density capital and residency hub.",
-      cities: "Monte-Carlo",
-    },
-    {
-      title: "Czech Republic",
-      subtitle: "Central European residential and investment base.",
-      cities: "Prague",
-    },
-    {
-      title: "Germany",
-      subtitle: "Economic core and urban prime assets.",
-      cities: "Munich · Frankfurt · Berlin",
-    },
-    {
-      title: "Spain",
-      subtitle: "Mediterranean lifestyle and international second residences.",
-      cities: "Barcelona · Madrid · Marbella · Seville",
-    },
-    {
-      title: "Portugal",
-      subtitle: "Relocation gateway and tax-efficient living.",
-      cities: "Lisbon · Cascais · Porto",
-    },
-    {
-      title: "Cyprus",
-      subtitle: "Residency structuring and Mediterranean access.",
-      cities: "Limassol · Paphos",
-    },
-    {
-      title: "France",
-      subtitle: "Riviera lifestyle, global capital city and alpine luxury.",
-      cities: "French Riviera · Paris · Courchevel",
-    },
-  ];
+import styles from "../services/services.module.css";
 
+export default function GeographyPage() {
   return (
     <div
       style={{
@@ -59,7 +11,7 @@ export default function GeographyPage() {
         padding: "64px 48px 120px",
       }}
     >
-      {/* Background (same style as other pages) */}
+      {/* Background */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <img
           src="/images/hero-water.jpg"
@@ -72,66 +24,240 @@ export default function GeographyPage() {
             transform: "scale(1.05)",
           }}
         />
-
-        {/* Dark overlay for readability */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(1200px 800px at 50% 30%, rgba(0,0,0,0.30), rgba(0,0,0,0.62))",
+              "linear-gradient(180deg, rgba(10,18,28,0.75) 0%, rgba(10,18,28,0.85) 40%, rgba(10,18,28,0.92) 100%)",
           }}
         />
       </div>
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1400, margin: "0 auto" }}>
-        {/* Smaller title */}
-        <h1 style={{ fontSize: 56, marginBottom: 12, lineHeight: 1.05 }}>
-          Geography
-        </h1>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: 1400,
+          margin: "0 auto",
+        }}
+      >
+        {/* Top nav (как в Services) */}
+        <div className={styles.topNav}>
+          <a className={styles.topLink} href="../services">
+            ← Back
+          </a>
 
-        <h2 style={{ fontSize: 24, fontWeight: 500, marginBottom: 10, opacity: 0.92 }}>
-          Residential, Investment & Hospitality Assets across Europe
-        </h2>
+          <a className={styles.topLink} href="../contacts">
+            Next →
+          </a>
+        </div>
 
-        <p style={{ maxWidth: 820, opacity: 0.85, lineHeight: 1.6 }}>
-          Advisory across prime residential real estate, investment-grade assets and hospitality
-          properties — supporting acquisitions in Europe’s most established financial, lifestyle and
-          alpine destinations.
-        </p>
+        {/* Header centered */}
+        <div style={{ textAlign: "center", maxWidth: 980, margin: "0 auto" }}>
+          <h1
+            className={styles.title}
+            style={{
+              margin: "0 0 18px",
+              // на всякий: если где-то перебивает — оставляем визуально как Services
+              fontWeight: 600,
+            }}
+          >
+            Geography
+          </h1>
 
+          <h2
+            className={styles.subtitle}
+            style={{
+              margin: "0 0 16px",
+              textAlign: "center",
+              fontWeight: 400, 
+              lineHeight: 1.9,
+            }}
+          >
+            Strategic Jurisdictions &amp; Core European Markets
+          </h2>
+
+          <p className={styles.intro} style={{ margin: "0 0 24px", textAlign:"center",maxWidth: 820, marginLeft: "auto", marginRight:"auto", }}>
+            Private advisory across financial centers, investment markets and prime lifestyle
+            destinations — aligned with residency, capital structuring and long-term asset
+            positioning.
+          </p>
+        </div>
+
+        {/* Cards: 3 in a row (как Services) */}
         <div
+          className={styles.grid}
+          data-geo-grid
           style={{
-            marginTop: 60,
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-            gap: 36,
+            marginTop: 56,
+            // services.grid уже задаёт 3 колонки + stretch, но оставляем твоё marginTop
           }}
         >
-          {countries.map((c) => (
-            <div
-              key={c.title}
-              style={{
-                padding: "32px 32px 36px",
-                borderRadius: 28,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                backdropFilter: "blur(14px)",
-              }}
-            >
-              <h3 style={{ fontSize: 24, marginBottom: 6, fontWeight: 600 }}>
-                {c.title}
-              </h3>
+          {/* Card 1 */}
+          <div
+            className={styles.card}
+            style={{
+              borderRadius: 28, // оставляем твою форму
+              minHeight: 520,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ textAlign: "left" }}>
+              <div
+                className={styles.cardTitle}
+                style={{
+                  // чтобы не было слишком “маленько”: можно чуть крупнее, но в стиле Services
+                  fontSize: 14,
+                  margin: 0,
+                }}
+              >
+                Tax-Optimized Jurisdictions
+              </div>
 
-              <p style={{ opacity: 0.85, marginBottom: 18, lineHeight: 1.6 }}>
-                {c.subtitle}
-              </p>
-
-              <p style={{ opacity: 0.9, lineHeight: 1.6 }}>{c.cities}</p>
+              <div className={styles.disclaimer} style={{ marginTop: 10 }}>
+                For residency &amp; capital structuring
+              </div>
             </div>
-          ))}
+
+            <div className={styles.cardText} style={{ marginTop: 18, flex: 1 }}>
+              <ul style={{ margin: 0, paddingLeft: 18 }}>
+                <li>Switzerland</li>
+                <li>Monaco</li>
+                <li>Italy</li>
+                <li>Portugal</li>
+                <li>Cyprus</li>
+                <li>Greece</li>
+                <li>Hungary</li>
+              </ul>
+
+              <div className={styles.divider} style={{ marginTop: 18, marginBottom: 18 }} />
+
+              <div className={styles.cardTitle} style={{ fontSize: 13 }}>
+                Relevant for:
+              </div>
+
+              <div className={styles.cardText} style={{ marginTop: 10 }}>
+                <div>→ tax residency planning</div>
+                <div>→ corporate and holding structures</div>
+                <div>→ cross-border liquidity management</div>
+                <div>→ asset protection planning</div>
+                <div>→ long-term capital positioning</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div
+            className={styles.card}
+            style={{
+              borderRadius: 28,
+              minHeight: 520,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ textAlign: "left" }}>
+              <div className={styles.cardTitle} style={{ fontSize: 14, margin: 0 }}>
+                Investment Core Markets
+              </div>
+
+              <div className={styles.disclaimer} style={{ marginTop: 10 }}>
+                Long-term capital allocation
+              </div>
+            </div>
+
+            <div className={styles.cardText} style={{ marginTop: 18, flex: 1 }}>
+              <ul style={{ margin: 0, paddingLeft: 18 }}>
+                <li>Germany</li>
+                <li>Spain</li>
+                <li>Portugal</li>
+                <li>Great Britain</li>
+                <li>Switzerland</li>
+                <li>Czech Republic</li>
+                <li>Poland</li>
+              </ul>
+
+              <div className={styles.divider} style={{ marginTop: 18, marginBottom: 18 }} />
+
+              <div className={styles.cardTitle} style={{ fontSize: 13 }}>
+                Focused on:
+              </div>
+
+              <div className={styles.cardText} style={{ marginTop: 10 }}>
+                <div>→ income-producing real estate</div>
+                <div>→ logistics and data-driven infrastructure</div>
+                <div>→ prime commerial assets</div>
+                <div>→ residential supply-constrained markets</div>
+                <div>→ long-duration yield strategies</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div
+            className={styles.card}
+            style={{
+              borderRadius: 28,
+              minHeight: 520,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ textAlign: "left" }}>
+              <div className={styles.cardTitle} style={{ fontSize: 14, margin: 0 }}>
+                Lifestyle &amp; Prime Living
+              </div>
+
+              <div className={styles.disclaimer} style={{ marginTop: 10 }}>
+                Second residences &amp; generational assets
+              </div>
+            </div>
+
+            <div className={styles.cardText} style={{ marginTop: 18, flex: 1 }}>
+              <ul style={{ margin: 0, paddingLeft: 18 }}>
+                <li>Italy</li>
+                <li>Spain</li>
+                <li>France</li>
+                <li>Monaco</li>
+                <li>Croatia</li>
+                <li>Greece</li>
+                <li>Portugal</li>
+              </ul>
+
+              <div className={styles.divider} style={{ marginTop: 18, marginBottom: 18 }} />
+
+              <div className={styles.cardTitle} style={{ fontSize: 13 }}>
+                Relevant for:
+              </div>
+
+              <div className={styles.cardText} style={{ marginTop: 10 }}>
+                <div>→ second-home positioning</div>
+                <div>→ lifestyle asset allocation</div>
+                <div>→ prime coastal markets</div>
+                <div>→ legacy property acquisition</div>
+                <div>→ yield &amp; long-term appreciation</div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Closing centered (как Services footnote по духу) */}
+        <div style={{ marginTop: 44, textAlign: "center" }}>
+          <div className={styles.footnote} style={{ maxWidth: 980, margin: "0 auto" }}>
+            Geography is approached as structure — not prescription.
+            <br />
+            Each mandate defines its own jurisdictional framework.
+          </div>
+        </div>
+
+        {/* Responsive tweak (оставляю твою логику) */}
+      
       </div>
+
+      {/* Small hack: apply responsive class via wrapper if you want */}
+    
     </div>
   );
 }

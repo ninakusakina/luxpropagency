@@ -1,281 +1,185 @@
 // app/[lang]/services/page.tsx
 import Link from "next/link";
+import styles from "./services.module.css";
 
 export default async function ServicesPage({
   params,
 }: {
   params: Promise<{ lang: string }>;
 }) {
-  const lang = (await params).lang || "en";
-
-  const services = [
-    {
-      title: "Private Real Estate Advisory",
-      subtitle:
-        "Discreet sourcing and buyer-side representation for residential and investment property across Europe.",
-      points: [
-        "Off-market property search",
-        "Buyer representation",
-        "Strategic shortlisting",
-        "Negotiation coordination",
-        "Due diligence process management",
-        "Closing coordination",
-      ],
-    },
-    {
-      title: "Family Office Coordination",
-      subtitle:
-        "Structured coordination of trusted partners across property, banking and cross-border matters.",
-      points: [
-        "Introductions to legal counsel and notaries",
-        "Fiduciary and structuring partners",
-        "Banking introductions",
-        "Account opening coordination",
-        "Financing support",
-        "Cross-border alignment",
-      ],
-    },
-    {
-      title: "Relocation & Lifestyle Integration",
-      subtitle:
-        "Support beyond acquisition — ensuring seamless transitions across jurisdictions.",
-      points: [
-        "Relocation advisory",
-        "Local onboarding support",
-        "Education and private network introductions",
-        "Trusted local service providers",
-        "Discreet concierge coordination",
-      ],
-    },
-    {
-      title: "Transaction Oversight",
-      subtitle: "Single point coordination across the full acquisition lifecycle.",
-      points: [
-        "Process timeline management",
-        "Communication flow alignment",
-        "Document coordination",
-        "Multi-party oversight",
-        "Discretion control",
-      ],
-    },
-    {
-      title: "Strategic Advisory",
-      subtitle: "Clarity around decisions — not asset management.",
-      points: [
-        "Hold versus exit considerations",
-        "Jurisdictional implications",
-        "Long-term residence strategy",
-        "Capital allocation context",
-      ],
-    },
-    {
-      title: "Private Network & Access",
-      subtitle:
-        "Curated introductions across capital, property and professional networks.",
-      points: [
-        "Investor and family office connections",
-        "Banking & fiduciary introductions",
-        "Legal and tax advisory referrals",
-        "Local market access",
-        "Off-market intelligence",
-      ],
-    },
-  ];
+  const { lang } = await params;
 
   return (
-    <div
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        color: "white",
-        overflow: "hidden",
-      }}
-    >
-      {/* Background */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `url("/images/hero-water.jpg")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "saturate(1.05)",
-          transform: "scale(1.02)",
-          zIndex: 0,
-        }}
-      />
-      {/* Dark overlay (a bit darker, like About) */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 1,
-          background:
-            "radial-gradient(1200px 800px at 50% 30%, rgba(0,0,0,0.35), rgba(0,0,0,0.72))",
-        }}
-      />
+    <main className={styles.page}>
+      <div className={styles.bg} />
 
-      {/* Content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "64px 24px 56px",
-        }}
-      >
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: 56,
-            margin: 0,
-            letterSpacing: 0.5,
-            lineHeight: 1.05,
-          }}
-        >
-          Services
-        </h1>
+      {/* Top navigation (как на About) */}
+      <div className={styles.topNav}>
+        <Link className={styles.topLink} href={`/${lang}/about`}>
+          ← Back
+        </Link>
 
-        <p
-          style={{
-            maxWidth: 720,
-            marginTop: 14,
-            marginBottom: 32,
-            opacity: 0.85,
-            fontWeight: 300,
-            lineHeight: 1.6,
-          }}
-        >
-          Private advisory across property, family office coordination and lifestyle —
-          delivered with discretion, clarity and precision.
-        </p>
-
-        {/* Cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: 40,
-          }}
-        >
-          {services.map((s) => (
-            <div
-              key={s.title}
-              style={{
-                padding: 32,
-                borderRadius: 24,
-                background: "rgba(255, 255, 255, 0.06)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                backdropFilter: "blur(12px)",
-                boxShadow: "0 18px 60px rgba(0,0,0,0.30)",
-                display: "flex",
-                flexDirection: "column",
-                minHeight: 360,
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: 26,
-                  fontWeight: 500,
-                  margin: 0,
-                  lineHeight: 1.2,
-                  minHeight: 62,
-                  display: "flex",
-                  alignItems: "flex-start",
-                }}
-              >
-                {s.title}
-              </h2>
-
-              <p
-                style={{
-                  fontWeight: 300,
-                  opacity: 0.85,
-                  marginTop: 10,
-                  marginBottom: 0,
-                  lineHeight: 1.6,
-                  minHeight: 72,
-                  display: "-webkit-box",
-                  WebkitBoxOrient: "vertical",
-                  WebkitLineClamp: 2,
-                  overflow: "hidden",
-                }}
-              >
-                {s.subtitle}
-              </p>
-
-              <ul
-                style={{
-                  marginTop: 18,
-                  marginBottom: 0,
-                  paddingLeft: 18,
-                  lineHeight: 1.85,
-                  opacity: 0.9,
-                }}
-              >
-                {s.points.map((p) => (
-                  <li key={p} style={{ marginBottom: 6 }}>
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom buttons (same as homepage / about) */}
-        <div
-          style={{
-            marginTop: 52,
-            display: "flex",
-            justifyContent: "center",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <a
-            href="mailto:ninakusakina@luxpropagency.com?subject=Request%20a%20consultation"
-            style={{
-              color: "rgba(255,255,255,0.92)",
-              textDecoration: "none",
-              fontSize: 13,
-              padding: "12px 22px",
-              borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.35)",
-              background: "transparent",
-              letterSpacing: 1,
-              textTransform: "uppercase",
-            }}
-          >
-            Request consultation
-          </a>
-
-          <Link
-            href={`/${lang}/geography`}
-            style={{
-              color: "rgba(255,255,255,0.92)",
-              textDecoration: "none",
-              fontSize: 13,
-              padding: "12px 22px",
-              borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.35)",
-              background: "transparent",
-              letterSpacing: 1,
-              textTransform: "uppercase",
-            }}
-          >
-            Geography
-          </Link>
-        </div>
-
-        {/* Optional: back to home */}
-        <div style={{ marginTop: 18, textAlign: "center", opacity: 0.75 }}>
-          <Link href={`/${lang}`} style={{ color: "white", textDecoration: "none" }}>
-            ← Back
-          </Link>
-        </div>
+        <Link className={styles.topLink} href={`/${lang}/geography`}>
+          Next →
+        </Link>
       </div>
-    </div>
+
+      {/* Intro */}
+      <section className={styles.intro}>
+        <h1 className={styles.title}>Services</h1>
+        <p className={styles.subtitle}>
+          Private advisory across real assets, family office coordination and
+          cross-border lifestyle — delivered with discretion.
+        </p>
+      </section>
+
+      {/* Cards */}
+      <section className={styles.grid}>
+        <article className={styles.card}>
+          <div className={styles.cardHead}>
+            <div className={styles.cardTitle}>PRIVATE REAL ESTATE ADVISORY</div>
+            <div className={styles.cardText}>
+              Discreet buyer-side representation across Europe and selected international markets.
+              
+            </div>
+             <div className={styles.cardText}>
+              Every engagement begins with your broader objectives - capital, lifestyle and long-term positioning.
+            </div>
+            <div className={styles.divider} />
+          </div>
+
+          <ul className={styles.list}>
+            <li>Off-market &amp; on-market sourcing</li>
+            <li>Strategic shortlisting</li>
+            <li>Due diligence coordination</li>
+          
+            <li>Offer preparation &amp; negotiation support</li>
+            
+            <li>Strategic closing oversight</li>
+            <li>Long-term asset positioning</li>
+          </ul>
+        </article>
+
+        <article className={styles.card}>
+          <div className={styles.cardHead}>
+            <div className={styles.cardTitle}>
+              FAMILY OFFICE COORDINATION
+            </div>
+            <div className={styles.cardText}>
+              Strategic coordination across banking, legal and fiduciary structures.
+            
+            </div>
+            <div className={styles.cardText}>
+              Our role is advisory and connective - assembling expertise around each client's objectives.
+            </div>
+      
+            <div className={styles.divider} />
+          </div>
+
+          <ul className={styles.list}>
+            <li>Private banking introductions</li>
+            <li>
+              Legal structuring &amp; residency pathways (via licensed partners)
+            </li>
+            <li>Tax advisory connections</li>
+            <li>Cross-border asset alignment</li>
+          
+            <li>Real assets positioning within broader personal strategies</li>
+          </ul>
+        </article>
+
+        <article className={styles.card}>
+          <div className={styles.cardHead}>
+            <div className={styles.cardTitle}>
+              RELOCATION &amp; LIFESTYLE INTEGRATION
+            </div>
+            <div className={styles.cardText}>
+              Discreet support beyond acquisition — ensuring seamless
+              transitions.
+            </div>
+            <div className={styles.cardText}>
+              We coordinate trusted partners to align property, residency and daily life - with continuity, privacy and long-term stability.
+            </div>
+            <div className={styles.divider} />
+          </div>
+
+          <ul className={styles.list}>
+            <li>Relocation coordination</li>
+            <li>Local onboarding &amp; settlement</li>
+            <li>Education &amp; private network introductions</li>
+            <li>Executive travel planning</li>
+            <li>Confidential concierge support</li>
+            <li>Ongoing local alignment</li>
+          
+          </ul>
+        </article>
+
+        <article className={styles.card}>
+          <div className={styles.cardHead}>
+            <div className={styles.cardTitle}>TRANSACTION OVERSIGHT</div>
+            <div className={styles.cardText}>
+              Single-point coordination across the full acquisition lifecycle.
+            </div>
+            <div className={styles.cardText}>
+              We manage complex multi-party transactions with structure, discretion and precision - ensuring continuity from offer to completion.
+            </div>
+            <div className={styles.divider} />
+          </div>
+
+          <ul className={styles.list}>
+            <li>Process timeline management</li>
+            <li>Multi-party communication alignment</li>
+            <li>Documentation flow coordination</li>
+            <li>Due diligence coordination (via licensed partners)</li>
+            <li>Discretion and privacy control</li>
+          </ul>
+        </article>
+
+        <article className={styles.card}>
+          <div className={styles.cardHead}>
+            <div className={styles.cardTitle}>STRATEGIC ADVISORY</div>
+            <div className={styles.cardText}>
+              Clarity around decisions — not asset management.
+            </div>
+            <div className={styles.cardText}>
+              We support strategic thinking around real estate within boarder personal and capital frameworks.
+            </div>
+            <div className={styles.divider} />
+          </div>
+
+          <ul className={styles.list}>
+            <li>Hold versus exit considerations</li>
+            <li>Jurisdictional implications</li>
+            <li>Long-term residence strategy alignment</li>
+            <li>Capital allocation context</li>
+            <li>Second-residence planning</li>
+          </ul>
+        </article>
+
+        <article className={styles.card}>
+          <div className={styles.cardHead}>
+            <div className={styles.cardTitle}>PRIVATE NETWORK &amp; ACCESS</div>
+            <div className={styles.cardText}>
+              Curated introductions across capital, property and professional
+              networks.
+            </div>
+            <div className={styles.cardText}>
+              We provide access to trusted international ecosystem - enabling discreet connections where traditional channels fall short.
+            </div>
+            <div className={styles.divider} />
+          </div>
+
+          <ul className={styles.list}>
+            <li>Investor and family office connections</li>
+            <li>Banking &amp; fiduciary introductions</li>
+            <li>Legal and tax advisory referrals</li>
+            <li>Local market access</li>
+            <li>Off-market intelligence</li>
+          </ul>
+        </article>
+      </section>
+
+    
+    </main>
   );
 }

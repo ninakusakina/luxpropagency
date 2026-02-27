@@ -13,7 +13,7 @@ export default async function HomePage({
       style={{
         minHeight: "100vh",
         position: "relative",
-        width: "100vw",
+        width: "100%",
         overflow: "hidden",
       }}
     >
@@ -32,7 +32,7 @@ export default async function HomePage({
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(180deg, rgba(10,18,28,0.55) 0%, rgba(10,18,28,0.35) 45%, rgba(10,18,28,0.65) 100%)",
+              "linear-gradient(180deg, rgba(10,18,28,0.75) 0%, rgba(10,18,28,0.85) 40%, rgba(10,18,28,0.92) 100%)",
           }}
         />
       </div>
@@ -126,90 +126,48 @@ export default async function HomePage({
       </div>
 
       {/* Center hero text */}
-      <section
-        style={{
-          position: "relative",
-          zIndex: 1,
-          padding: "90px 64px 110px",
-          display: "flex",
-          alignItems: "center",
-          minHeight: "calc(100vh - 92px)",
-        }}
-      >
-        <div style={{ maxWidth: 760 }}>
-          <h1
-            style={{
-              fontSize: "64px",
-              lineHeight: 1.08,
-              fontWeight: 800,
-              letterSpacing: "0.06em",
-              color: "rgba(255,255,255,0.96)",
-              textTransform: "uppercase",
-              margin: 0,
-            }}
-          >
-            LUXPROPAGENCY
-          </h1>
+     <section
+  style={{
+    position: "relative",
+    zIndex: 1,
+    padding: "110px 64px",
+    display: "flex",
+    alignItems: "center",
+    minHeight: "calc(100vh - 92px)",
+  }}
+>
+  <div style={{ maxWidth: 760 }}>
+    <h1
+      style={{
+        fontSize: "60px",
+        lineHeight: 1.08,
+        fontWeight: 700,
+        letterSpacing: "-0.01em",
+        color: "rgba(255,255,255,0.96)",
+        textTransform: "uppercase",
+        textShadow: "0 2px 20px rgba(0,0,0,0.35)",
+        margin: 0,
+      }}
+    >
+      LUXPROPAGENCY
+    </h1>
 
-          <div
-            style={{
-              marginTop: 18,
-              fontSize: 17,
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.82)",
-              maxWidth: 560,
-              letterSpacing: "0.02em",
-            }}
-          >
-            Private Real Estate & Family Office Advisory
-            <br />
-            Where capital meets real assets — discreetly.
-          </div>
-
-          <div
-            style={{
-              marginTop: 28,
-              display: "flex",
-              gap: 12,
-              flexWrap: "wrap",
-            }}
-          >
-            <a
-              href="mailto:ninakusakina@luxpropagency.com?subject=Private%20property%20shortlist%20request"
-              style={{
-                color: "rgba(255,255,255,0.92)",
-                textDecoration: "none",
-                fontSize: 13,
-                padding: "12px 22px",
-                borderRadius: 999,
-                border: "1px solid rgba(255,255,255,0.35)",
-                background: "transparent",
-                letterSpacing: 1,
-                textTransform: "uppercase",
-              }}
-            >
-              REQUEST A SHORTLIST
-            </a>
-
-            <Link
-              href={`/${lang}/services`}
-              style={{
-                color: "rgba(255,255,255,0.92)",
-                textDecoration: "none",
-                fontSize: 13,
-                padding: "12px 22px",
-                borderRadius: 999,
-                border: "1px solid rgba(255,255,255,0.35)",
-                background: "transparent",
-                letterSpacing: 1,
-                textTransform: "uppercase",
-              }}
-            >
-              EXPLORE SERVICES
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div
+      style={{
+        marginTop: 22,
+        fontSize: 17,
+        lineHeight: 1.7,
+        color: "rgba(255,255,255,0.90)",
+        maxWidth: 520,
+        letterSpacing: "0.03em",
+      }}
+    >
+      Private Real Estate & Family Office Advisory
+      <br />
+      Where capital meets real assets — discreetly.
+    </div>
+  </div>
+</section>
     </main>
   );
 }

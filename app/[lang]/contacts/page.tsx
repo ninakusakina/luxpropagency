@@ -1,3 +1,4 @@
+
 // app/[lang]/contacts/page.tsx
 import Link from "next/link";
 
@@ -11,9 +12,6 @@ export default async function ContactsPage({
   const EMAIL = "ninakusakina@luxpropagency.com";
   const PHONE = "+420774079513";
   const PHONE_LABEL = "+420 774 079 513";
-
-  const LINKEDIN_URL =
-    "https://www.linkedin.com/in/nina-kusakina-7322a01b9?utm_source=share_via&utm_content=profile&utm_medium=member_ios";
 
   const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent(
     "Private consultation request"
@@ -35,12 +33,13 @@ export default async function ContactsPage({
           }}
         />
 
+        {/* Dark overlay (darker) */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(1200px 800px at 50% 30%, rgba(0,0,0,0.28), rgba(0,0,0,0.60))",
+              "linear-gradient(180deg, rgba(10,18,28,0.75) 0%, rgba(10,18,28,0.85) 40%, rgba(10,18,28,0.92) 100%)",
           }}
         />
       </div>
@@ -50,14 +49,24 @@ export default async function ContactsPage({
           position: "relative",
           zIndex: 1,
           minHeight: "100vh",
-          padding: "28px 24px 80px",
+          padding: "28px 24px 90px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        {/* Back */}
-        <div style={{ width: "100%", maxWidth: 1100, marginBottom: 24 }}>
+        {/* Top nav: Back / Next */}
+        <div
+          style={{
+            width: "100%",
+            maxWidth: 1100,
+            marginBottom: 24,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
           <Link
             href={`/${lang}`}
             style={{
@@ -75,6 +84,25 @@ export default async function ContactsPage({
           >
             ← Back
           </Link>
+
+          <Link
+            href={`/${lang}`}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              textDecoration: "none",
+              color: "rgba(255,255,255,0.88)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              background: "rgba(255,255,255,0.08)",
+              padding: "10px 14px",
+              borderRadius: 999,
+              backdropFilter: "blur(10px)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Next →
+          </Link>
         </div>
 
         {/* Header */}
@@ -86,20 +114,6 @@ export default async function ContactsPage({
             padding: "24px 10px 0",
           }}
         >
-          <div
-            style={{
-              letterSpacing: 5,
-              fontSize: 12,
-              opacity: 0.75,
-              fontWeight: 700,
-              marginBottom: 18,
-              color: "rgba(255,255,255,0.85)",
-              textTransform: "uppercase",
-            }}
-          >
-            GET IN TOUCH
-          </div>
-
           <h1
             style={{
               fontSize: 56,
@@ -107,7 +121,7 @@ export default async function ContactsPage({
               lineHeight: 1.05,
               color: "rgba(255,255,255,0.96)",
               textShadow: "0 10px 40px rgba(0,0,0,0.35)",
-              fontWeight: 700,
+              fontWeight: 650,
               textTransform: "none",
             }}
           >
@@ -123,7 +137,7 @@ export default async function ContactsPage({
               color: "rgba(255,255,255,0.88)",
             }}
           >
-            Private Real Estate &amp; Family Office Advisory
+         Private Real Estate &amp; Family Office Advisory
           </p>
 
           {/* Card */}
@@ -163,24 +177,9 @@ export default async function ContactsPage({
                   {PHONE_LABEL}
                 </a>
               </div>
-
-              <div style={{ textAlign: "center" }}>
-                <div className="label">LinkedIn</div>
-                <a
-                  className="softLink"
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Nina Kusakina
-                </a>
-              </div>
             </div>
           </div>
         </div>
-
-        {/* Footer line at the very bottom (NOT inside card) */}
-    
 
         <style>{`
           .label{

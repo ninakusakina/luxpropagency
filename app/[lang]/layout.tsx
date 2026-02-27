@@ -1,8 +1,17 @@
+
+// app/[lang]/layout.tsx
 import type { ReactNode } from "react";
 import Link from "next/link";
 
-export default function LangLayout({ children }: { children: ReactNode }) {
+export default async function LangLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ lang: string }>;
+}) {
   const year = new Date().getFullYear();
+  const { lang } = await params;
 
   return (
     <div
@@ -16,7 +25,7 @@ export default function LangLayout({ children }: { children: ReactNode }) {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* overlay */}
+      {/* overlay (как везде) */}
       <div
         style={{
           position: "absolute",
@@ -28,50 +37,75 @@ export default function LangLayout({ children }: { children: ReactNode }) {
         }}
       />
 
-      {/* Page content */}
-      <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
+      {/* content */}
+      <main
+        style={{
+          position: "relative",
+          zIndex: 1,
+          minHeight: "100vh",
+          paddingBottom: 78, // чтобы футер НЕ наезжал на текст
+        }}
+      >
         {children}
+      </main>
 
-        {/* Global legal footer line */}
+      {/* footer fixed bottom + свой фон */}
+      <footer
+        style={{
+          position: "fixed",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 50,
+          display: "flex",
+          justifyContent: "center",
+          padding: "10px 16px 14px",
+          background:
+            "linear-gradient(180deg, rgba(10,18,28,0.00) 0%, rgba(10,18,28,0.85) 40%, rgba(10,18,28,0.92) 100%)",
+          backdropFilter: "blur(8px)",
+        }}
+      >
         <div
           style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 18,
-            display: "flex",
-            justifyContent: "center",
-            padding: "0 16px",
-            pointerEvents: "none", // so it doesn't block page UI
+            fontSize: 12,
+            opacity: 0.78,
+            color: "rgba(255,255,255,0.92)",
+            letterSpacing: 0.2,
+            textAlign: "center",
+            lineHeight: 1.35,
+            whiteSpace: "nowrap",
           }}
         >
-          <div
+          © {year} <span style={{ fontWeight: 600 }}>LUXPROPAGENCY</span> · Luxpropagency s.r.o. · IČO 23862530 ·
+          Lindleyova 2822/10, Dejvice, 160 00 Praha 6, Czech Republic
+          {" · "}
+          <Link
+            href={`/${lang}/legal`}
             style={{
-              fontSize: 12,
-              opacity: 0.62,
               color: "rgba(255,255,255,0.92)",
-              letterSpacing: 0.2,
-              textAlign: "center",
-              pointerEvents: "auto", // enable clicks on the link
+              textDecoration: "none",
+              borderBottom: "1px solid rgba(255,255,255,0.28)",
+              paddingBottom: 1,
+              marginLeft: 6,
             }}
           >
-            © {year}{" "}
-            <Link
-              href="/en/legal"
-              style={{
-                color: "rgba(255,255,255,0.92)",
-                textDecoration: "none",
-                borderBottom: "1px solid rgba(255,255,255,0.28)",
-                paddingBottom: 1,
-              }}
-            >
-              LUXPROPAGENCY · Luxpropagency s.r.o.
-            </Link>
-            {" · "}
-            IČO 23862530 · Lindleyova 2822/10, Dejvice, 160 00 Praha 6, Czech Republic
-          </div>
+            Legal Notice
+          </Link>
+          {" · "}
+          <Link
+            href={`/${lang}/cookies`}
+            style={{
+              color: "rgba(255,255,255,0.92)",
+              textDecoration: "none",
+              borderBottom: "1px solid rgba(255,255,255,0.28)",
+              paddingBottom: 1,
+              marginLeft: 6,
+            }}
+          >
+            Cookie Policy
+          </Link>
         </div>
-      </main>
+      </footer>
     </div>
   );
 }
