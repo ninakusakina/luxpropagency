@@ -1,55 +1,21 @@
 :root{
-  --bg: #f6f7f8;
-  --card: rgba(255,255,255,0.72);
-  --stroke: rgba(0,0,0,0.08);
-  --text: rgba(10,10,10,0.92);
-  --muted: rgba(10,10,10,0.62);
-  --shadow: 0 20px 60px rgba(0,0,0,0.10);
-  --radius: 22px;
+  --bg: #0a121c; /* dark site bg */
+  --text: rgba(255,255,255,0.92);
 }
 
 *{ box-sizing: border-box; }
-html,body{ height:100%; }
+html, body { height: 100%; }
 body{
-  margin:0;
+  margin: 0;
+  background: var(--bg);
   color: var(--text);
-  background:
-    radial-gradient(900px 500px at 20% 10%, rgba(120,180,255,0.18), transparent 60%),
-    radial-gradient(900px 500px at 85% 20%, rgba(255,255,255,0.35), transparent 55%),
-    radial-gradient(900px 600px at 70% 85%, rgba(130,220,255,0.14), transparent 55%),
-    linear-gradient(180deg, #f6f7f8 0%, #f2f4f6 100%);
   font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", Arial, sans-serif;
 }
 
-a{ color: inherit; text-decoration:none; }
-.container{ max-width: 1100px; margin: 0 auto; padding: 22px; }
-.card{
-  border-radius: var(--radius);
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(10px);
-}
-.h1{ font-size: 44px; line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
-.h2{ font-size: 22px; margin: 0; }
-.p{ color: var(--muted); line-height: 1.6; margin: 0; }
-.btn{
-  display:inline-flex; gap:10px; align-items:center; justify-content:center;
-  padding: 12px 16px; border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.72);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-}
-.btn:hover{ transform: translateY(-1px); }
-.grid{
-  display:grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
-}
-@media (max-width: 900px){
-  .h1{ font-size: 36px; }
-  .grid{ grid-template-columns: repeat(6, 1fr); }
-}.hero{
+a{ color: inherit; text-decoration: none; }
+
+/* ================= HERO ================= */
+.hero{
   position: relative;
   min-height: 100vh;
   width: 100%;
@@ -64,10 +30,12 @@ a{ color: inherit; text-decoration:none; }
 .heroOverlay{
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(900px 500px at 20% 15%, rgba(255,255,255,0.18), transparent 60%),
-    radial-gradient(900px 500px at 85% 25%, rgba(255,255,255,0.10), transparent 62%),
-    linear-gradient(180deg, rgba(10,20,30,0.45) 0%, rgba(10,20,30,0.30) 35%, rgba(10,20,30,0.45) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(10,18,28,0.75) 0%,
+    rgba(10,18,28,0.85) 40%,
+    rgba(10,18,28,0.92) 100%
+  );
 }
 
 .heroTop{
@@ -76,14 +44,13 @@ a{ color: inherit; text-decoration:none; }
   left: 28px;
   right: 28px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
   z-index: 2;
 }
 
 .heroBrand{
-  text-decoration: none;
   color: rgba(255,255,255,0.92);
 }
 
@@ -91,6 +58,7 @@ a{ color: inherit; text-decoration:none; }
   font-weight: 700;
   letter-spacing: 0.18em;
   font-size: 14px;
+  text-transform: uppercase;
 }
 
 .heroBrandSub{
@@ -103,110 +71,171 @@ a{ color: inherit; text-decoration:none; }
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .heroNavLink{
   color: rgba(255,255,255,0.92);
-  text-decoration: none;
   font-size: 13px;
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.20);
-  background: rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
 }
 
 .heroNavLink:hover{
-  background: rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.12);
 }
 
+/* IMPORTANT: desktop текст должен быть СЛЕВА */
 .heroCenter{
   position: relative;
   z-index: 2;
   min-height: 100vh;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  padding: 120px 22px 60px;
-  color: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* влево */
+  padding: 110px 28px 90px;
+  text-align: left;
+}
+
+.heroInner{
+  max-width: 760px;
 }
 
 .heroTitle{
-  font-size: clamp(36px, 5vw, 62px);
-  font-weight: 800;
-  letter-spacing: 0.22em;
+  margin: 0;
+  font-size: 60px;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.96);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.35);
 }
 
 .heroSubtitle{
-  margin-top: 14px;
-  font-size: clamp(14px, 1.6vw, 18px);
-  opacity: 0.85;
+  margin-top: 22px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.90);
+  max-width: 520px;
+  letter-spacing: 0.03em;
 }
 
-.heroCtas{
-  margin-top: 26px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+/* ================= MOBILE ================= */
+@media (max-width: 768px){
 
-.heroBtn{
-  display: inline-block;
-  padding: 12px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  color: rgba(10,10,10,0.92);
-  background: rgba(255,255,255,0.88);
-  border: 1px solid rgba(255,255,255,0.35);
-  backdrop-filter: blur(10px);
-  font-size: 13px;
-}
+  .heroTop{
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    gap: 12px;
+  }
 
-.heroBtn.ghost{
-  color: rgba(255,255,255,0.92);
-  background: rgba(0,0,0,0.14);
-  border: 1px solid rgba(255,255,255,0.22);
-}
-h1 {
-  font-size: 64px;
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
+  /* кнопки колонкой и строго вправо */
+  .heroNav{
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 42px;
+  .heroNavLink{
+    width: fit-content;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .heroBrandTitle{
+    font-size: 12px;
+    letter-spacing: 0.16em;
+  }
+
+  .heroBrandSub{
+    font-size: 11px;
+  }
+
+  .heroCenter{
+    padding: 120px 20px 110px;
+    align-items: flex-start;  /* чуть выше */
+  }
+
+  .heroTitle{
+    font-size: 28px;
+    letter-spacing: 0.10em;
+    line-height: 1.08;
+  }
+
+  .heroSubtitle{
+    font-size: 15px;
   }
 }
-h1 {
-  font-size: 64px;
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
-}
-
+/* ================= MOBILE (<= 768px) ================= */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 42px;
+  /* TOP: бренд слева, меню справа (колонкой) */
+  .heroTop {
+    left: 16px !important;
+    right: 16px !important;
+    top: 16px !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+  }
+
+  /* бренд чуть компактнее */
+  .heroBrandTitle {
+    font-size: 12px !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .heroBrandSub {
+    font-size: 11px !important;
+    opacity: 0.75 !important;
+  }
+
+  /* NAV: строго вправо и колонкой */
+  .heroNav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .heroNavLink {
+    width: fit-content !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* HERO ТЕКСТ: левее и компактнее */
+  .heroCenter {
+    padding: 120px 20px 110px !important;
+    text-align: left !important;
+    place-content: start !important;
+    align-content: start !important;
+  }
+
+  .heroTitle {
+    font-size: 28px !important;
+    letter-spacing: 0.10em !important;
+    line-height: 1.08 !important;
+  }
+
+  .heroSubtitle {
+    font-size: 15px !important;
   }
 }
-h1 {
-  font-size: 64px;
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
+/* MOBILE FOOTER */
+@media (max-width:768px){
+
+footer{
+font-size:6px !important;
+opacity:0.7;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 42px;
-  }
-}
-
-html, body {
-  background: #0a121c !important; /* тёмно-синий как весь сайт */
 }

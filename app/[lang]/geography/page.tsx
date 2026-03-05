@@ -79,9 +79,9 @@ export default function GeographyPage() {
           </h2>
 
           <p className={styles.intro} style={{ margin: "0 0 24px", textAlign:"center",maxWidth: 820, marginLeft: "auto", marginRight:"auto", }}>
-            Private advisory across financial centers, investment markets and prime lifestyle
-            destinations — aligned with residency, capital structuring and long-term asset
-            positioning.
+            Private real estate advisory across Europe's key financial jurisdiction, investment markets and prime lifestyle
+            destinations — structured around capital preservation, strategic residency and long-term asset allocation.
+            
           </p>
         </div>
 
