@@ -8,13 +8,15 @@
   overflow: hidden;
 }
 
-.bg {
+.bg{
   position: absolute;
   inset: 0;
-  background-image: url("/water.jpg");
+  z-index: -2;
+  overflow: hidden;
+
+  background-image: url("/images/hero-water.jpg"); /* как везде */
   background-size: cover;
   background-position: center;
-  z-index: -2;
 }
 
 .page::before {
@@ -58,9 +60,13 @@
 }
 
 .intro {
-  max-width: 680px;
-  margin: 0 auto 26px; /* карточки выше */
+  max-width: 720px;
+  margin: 0 auto 30px; /* карточки выше */
   text-align: center;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+  color: rgba(242,242,242,0.92);
 }
 
 .title {
@@ -72,7 +78,8 @@
 }
 
 .subtitle {
-  margin: 0;
+  margin-top: -6px;
+  margin-bottom: 10px;
   font-size: 16px;
   line-height: 1.75;
   color: rgba(242, 242, 242, 0.9);
