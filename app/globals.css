@@ -207,4 +207,6 @@ h1 {
   }
 }
 
-
+html, body {
+  background: #0a121c !important; /* тёмно-синий как весь сайт */
+}

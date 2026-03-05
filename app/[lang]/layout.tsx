@@ -12,6 +12,13 @@ export default async function LangLayout({
   const year = new Date().getFullYear();
   const { lang } = await params;
 
+  const linkStyle: React.CSSProperties = {
+    color: "rgba(255,255,255,0.92)",
+    textDecoration: "none",
+    borderBottom: "1px solid rgba(255,255,255,0.22)",
+    paddingBottom: 1,
+  };
+
   return (
     <div
       style={{
@@ -24,14 +31,13 @@ export default async function LangLayout({
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* overlay (как везде) */}
+      {/* overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(1200px 700px at 50% 35%, rgba(255,255,255,0.10), rgba(0,0,0,0.55))",
-          
+             "linear-gradient(180deg, rgba(10,18,28,0.75) 0%, rgba(10,18,28,0.85) 40%, rgba(10,18,28,0.95) 100%)",
           zIndex: 0,
           pointerEvents: "none",
         }}
@@ -43,60 +49,53 @@ export default async function LangLayout({
           position: "relative",
           zIndex: 1,
           minHeight: "100vh",
-          paddingBottom: 96, // чуть больше, чтобы точно не наезжало
+          paddingBottom: 92, // чтобы контент не залезал под футер
         }}
       >
         {children}
       </main>
 
-      {/* footer: тот же фон, без "чужой плашки" */}
+      {/* footer: прозрачный контейнер, плашка ТОЛЬКО под текстом */}
       <footer
         style={{
           position: "fixed",
           left: 0,
           right: 0,
-          bottom: 0,
+          bottom: 14,
           zIndex: 50,
           display: "flex",
           justifyContent: "center",
-          padding: "12px 16px",
-          pointerEvents: "auto",
+          padding: "0 16px",
+          background: "transparent", // важно: НЕТ full-width полосы
+          pointerEvents: "none",
         }}
       >
-        {/* Этот слой делает фон футера единым с общим фоном */}
         <div
           style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: 72,
-            background: "trasparent", 
-            
-            WebkitBackdropFilter: "blur(10px)",
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
+            pointerEvents: "auto",
             fontSize: 12,
             color: "rgba(255,255,255,0.92)",
-            opacity: 0.80,
             letterSpacing: 0.2,
-            textAlign: "center",
             lineHeight: 1.35,
-            maxWidth: 1100,
+            textAlign: "center",
 
-            // ключевое: чтобы не "вылазило" и красиво переносилось
-            display: "flex",
+            display: "inline-flex",
             flexWrap: "wrap",
+            gap: 8,
             justifyContent: "center",
             alignItems: "center",
-            gap: 8,
+
+            padding: "8px 12px",
+            borderRadius: 999,
+
+            // тёмная плашка, без “синей полосы” и без белой линии
+            background:
+              "linear-gradient(180deg, rgba(10,18,28,0.00) 0%, rgba(10,18,28,0.70) 35%, rgba(10,18,28,0.88) 100%)",
+            // УБИРАЕМ blur — он часто даёт этот голубой tint из-за body-фона
+            backdropFilter: "none",
+            WebkitBackdropFilter: "none",
+            border: "none",
+            boxShadow: "none",
           }}
         >
           <span>
@@ -106,29 +105,13 @@ export default async function LangLayout({
 
           <span style={{ opacity: 0.75 }}>·</span>
 
-          <Link
-            href={`/${lang}/legal`}
-            style={{
-              color: "rgba(255,255,255,0.92)",
-              textDecoration: "none",
-              borderBottom: "1px solid rgba(255,255,255,0.28)",
-              paddingBottom: 1,
-            }}
-          >
+          <Link href={`/${lang}/legal`} style={linkStyle}>
             Legal Notice
           </Link>
 
           <span style={{ opacity: 0.75 }}>·</span>
 
-          <Link
-            href={`/${lang}/cookies`}
-            style={{
-              color: "rgba(255,255,255,0.92)",
-              textDecoration: "none",
-              borderBottom: "1px solid rgba(255,255,255,0.28)",
-              paddingBottom: 1,
-            }}
-          >
+          <Link href={`/${lang}/cookies`} style={linkStyle}>
             Cookie Policy
           </Link>
         </div>
