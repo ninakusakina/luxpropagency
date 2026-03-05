@@ -49,7 +49,7 @@ export default async function LangLayout({
           position: "relative",
           zIndex: 1,
           minHeight: "100vh",
-          paddingBottom: 92, // чтобы контент не залезал под футер
+          paddingBottom: 40, // чтобы контент не залезал под футер
         }}
       >
         {children}
@@ -59,9 +59,10 @@ export default async function LangLayout({
       <footer
         style={{
           position: "fixed",
+          marginTop: 60,
           left: 0,
           right: 0,
-          bottom: 14,
+          bottom: 8,
           zIndex: 50,
           display: "flex",
           justifyContent: "center",
@@ -73,10 +74,11 @@ export default async function LangLayout({
         <div
           style={{
             pointerEvents: "auto",
-            fontSize: 12,
-            color: "rgba(255,255,255,0.92)",
-            letterSpacing: 0.2,
-            lineHeight: 1.35,
+            fontSize: 11,
+            color: "rgba(255,255,255,0.65)",
+            letterSpacing: 0.12,
+            lineHeight: 1.25,
+            fontWeight: 400,
             textAlign: "center",
 
             display: "inline-flex",
