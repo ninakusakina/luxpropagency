@@ -116,6 +116,11 @@ export default async function LangLayout({
           <Link href={`/${lang}/cookies`} style={linkStyle}>
             Cookie Policy
           </Link>
+           <span style={{ opacity: 0.75 }}>·</span>
+
+          <Link href={`/new`} style={linkStyle}>
+            New Webpage
+          </Link>
         </div>
       </footer>
     </div>
