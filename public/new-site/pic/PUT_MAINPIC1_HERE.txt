@@ -1,0 +1,2 @@
+Copy your hero image into this folder and name it exactly: mainpic1.jpeg
+Expected path: pic/mainpic1.jpeg
