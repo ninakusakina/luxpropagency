@@ -1,38 +1,35 @@
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "LUXPROPAGENCY | Private Real Estate Advisory — New Version",
-  description:
-    "A considered approach to real estate, tailored to you. Explore the new LUXPROPAGENCY website experience.",
+  title: "LUXPROPAGENCY | New Website",
+  description: "Private Real Estate Advisory & Curated Properties.",
 };
 
 export default function NewWebsitePage() {
   return (
-    <main className="newWebsiteFrame">
+    <main
+      style={{
+        position: "fixed",
+        inset: 0,
+        width: "100%",
+        height: "100dvh",
+        margin: 0,
+        padding: 0,
+        overflow: "hidden",
+        background: "#0b1420",
+      }}
+    >
       <iframe
         src="/new-site/index.html"
-        title="LUXPROPAGENCY — new website version"
-        loading="eager"
-        allow="clipboard-read; clipboard-write"
+        title="LUXPROPAGENCY New Website"
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
       />
-      <style jsx>{`
-        .newWebsiteFrame {
-          position: fixed;
-          inset: 0;
-          width: 100%;
-          height: 100dvh;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          background: #0b1420;
-        }
-        iframe {
-          display: block;
-          width: 100%;
-          height: 100%;
-          border: 0;
-        }
-      `}</style>
     </main>
   );
 }
