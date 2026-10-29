@@ -20,8 +20,10 @@ is important for the whole webpage */
 }
 
 html {
+  --navbar-offset: clamp(70px, 7vw, 90px);
+  scroll-padding-top: var(--navbar-offset);
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  
 }
 
 body {
