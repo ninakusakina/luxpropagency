@@ -1,0 +1,174 @@
+/* This style sheet contains all overall styles 
+like font sizes and color shemas, aswell as everything which 
+is important for the whole webpage */
+
+/* COLOR SHEMAS & FONT SIZES*/
+:root {
+  --navy: #0b1420;
+  --navy-soft: #111e2b;
+  --cream: #f3f0e9;
+  --paper: #eae6dc;
+  --gold: #c7b58b;
+  --text-muted: #a9b0b6;
+  --text-dark-muted: #646b70;
+  --dark-text: #18212a;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+.site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background .25s, padding .25s;
+}
+
+.site-header.scrolled {
+  position: fixed;
+  padding: 8px 0;
+  background: rgba(8, 16, 26, .94);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  backdrop-filter: blur(14px);
+}
+
+.brand-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  white-space: normal;
+}
+
+.brand-name {
+  font-size: 1rem;
+  letter-spacing: .19em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.brand-caption {
+  color: rgba(243, 240, 233, .66);
+  font-size: .57rem;
+  letter-spacing: .09em;
+}
+
+.section-kicker {
+  color: var(--gold);
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .21em;
+  margin-bottom: 22px;
+}
+h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 4.5vw, 4.3rem);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.12;
+}
+
+h2 em {
+  color: var(--gold);
+  font-weight: 400;
+}
+h4 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+  font-weight: 200;
+  letter-spacing: -.015em;
+  line-height: 1.02;
+}
+
+h4 em {
+  color:var(--gold);
+  font-weight: 200;
+}
+
+.body-large {
+  margin: 0 0 19px;
+  font-size: clamp(1.05rem, 1.55vw, 1.3rem);
+  line-height: 1.8;
+}
+
+.body-copy {
+  margin: 0 0 28px;
+  color: #646b70;
+  font-size: .92rem;
+  line-height: 1.9;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(199, 181, 139, .65);
+  color: var(--cream);
+  font-size: .77rem;
+  letter-spacing: .035em;
+  text-decoration: none;
+  transition: gap .2s, color .2s;
+}
+
+.text-link:hover {
+  gap: 25px;
+  color: var(--gold);
+}
+.dark-link {
+  color: var(--dark-text);
+  border-color: var(--gold);
+}
+
+.about-image-wrap {
+  position: relative;
+  margin-top: clamp(55px, 8vw, 110px);
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: clamp(300px, 48vw, 610px);
+  object-fit: cover;
+}
+
+.image-note {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 16px 22px;
+  background: var(--cream);
+  color: #5f6569;
+  font-size: .7rem;
+  letter-spacing: .04em;
+}
+
+.image-note span {
+  margin-right: 18px;
+  color: var(--gold);
+}
